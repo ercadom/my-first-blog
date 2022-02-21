@@ -13,9 +13,13 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
+# Djangoは'http://127.0.0.1:8000/' に来たリクエストは blog.urls へリダイレクトするようになり、それ以降はそちらを参照するようになる
+
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('blog.urls')),
 ]
